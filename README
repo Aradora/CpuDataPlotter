@@ -1,2 +1,3 @@
 Cpu Data Plotter
 Given data in csv file with timestamp with regular intervals in first row and data to plot in next columns the output will be png file with plot.
+Script created to visualize relation between cpu usage, cpu speed and temperature.
