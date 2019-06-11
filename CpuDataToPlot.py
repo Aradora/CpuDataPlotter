@@ -5,7 +5,7 @@ import datetime
 import sys
 import csv
 
-filename = ''
+# filename = 'data.csv'
 if len(sys.argv) == 2:
     filename = sys.argv[1]
 else:
@@ -24,15 +24,16 @@ with open(filename,'r') as f_input:
                 if index == 0:
                     data[index].append(datetime.datetime.strptime(dane, "%H:%M:%S"))
                 else:
-                    data[index].append(int(dane))
+                    data[index].append(float(dane))
 
     except:
         print("ERR: Bad data format at line: " + str(lineNumber))
         print(row)
         print('Exiting.')
         exit(1)
+# adding proper time data
+    data[0] = [data[0][0] + (data[0][1] - data[0][0])*i for i in range(len(data[0]))]
 
-    data[0] = [data[0][0] + datetime.timedelta(seconds=i) for i in range(len(data[0]))]
     #magic number comes from experiments
     width = int(len(data[0]) / 29)
     length = 4
